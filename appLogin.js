@@ -17,6 +17,10 @@ function ingreso(){
       });
 }
 
+
+ 
+
+
 function observador(){
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
@@ -28,9 +32,25 @@ function observador(){
 
           document.getElementById("usuario").innerHTML = "Bienvenido "+user.email;
           // var URLactual = window.location;
-          var URLactual = window.location;
-          var url_redi = 'https://juanvaldemar.github.io/WebSoat/menu.html';
-          if (URLactual != url_redi) {
+          var URLactual = window.location.href;
+          let url_condition = URLactual.substr(0,17);
+
+
+
+          var url_redi_local = 'http://localhost/WebSoat/menu.html';
+          var url_redi_remote = 'https://juanvaldemar.github.io/WebSoat/menu.html';
+
+ 
+         if(url_condition == "http://localhost/"){
+           console.log("Test"); 
+           location.href= url_redi_local;
+         }else{
+          console.log("Producción")
+          location.href= url_redi_remote;
+         }
+
+
+          if (URLactual == url_redi) {
               // location.href= url_redi;
           }
 
