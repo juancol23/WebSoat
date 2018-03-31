@@ -206,13 +206,6 @@ function eliminaruser(id){
 // }
 
 
-function addUser(){
-  location.href='http://localhost/SoatRicardo/Curso%20Firebase/CRUD%20Firebase/index.html';
-}function addSoat(){
-  location.href='http://localhost/SoatRicardo/Acceso/addSoat.html';
-}function ListarSoat(){
-  location.href='http://localhost/SoatRicardo/Acceso/listarSoat.html';
-}
 
 
 function observador(){
