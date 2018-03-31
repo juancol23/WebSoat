@@ -18,17 +18,19 @@
     body{
     margin-top: 10%;
     text-align: center;
+          background: #626e7a;
+
       }
   </style>
   <body>
     <div class="container">
  <div style="padding:  2em; bask: red; background: #ececec; ">
      <h4>Registro de usuarios</h4>
-     <input id="email_register" type="email" placeholder="Ingresa email" value="asd@asd.com"><br><br>
-     <input id="name" type="text" placeholder="name"><br><br>
-     <input id="contrasena_register" type="password" placeholder="Ingresa contraseña"><br><br>
-     <button onclick="registrar()">Registrar</button>
-     <button onclick="cerrar()">cerrar</button>
+     <input id="email_register"  class="form-control my-3" type="email" placeholder="Ingresa email" ">
+     <input id="name" type="text"  class="form-control my-3" placeholder="nombre">
+     <input id="contrasena_register" type="password"  class="form-control my-3" placeholder="Ingresa contraseña">
+     <button onclick="registrar()" class="btn btn-info">Registrar</button>
+     <!-- <button onclick="cerrar()" class="btn btn-info">cerrar</button> -->
 
      <div class="col-sm"> 
        <table class="table my-3">
