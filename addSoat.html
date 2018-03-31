@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-
+      <link rel="stylesheet" href="css/style.css">
     <title>Mi primer CRUD con Firebase</title>
 
     <!-- Firestore -->
@@ -16,17 +16,43 @@
   </head>
   <style>
     body{
-    margin-top: 10%;
+ 
     text-align: center;
-          background: #626e7a;
-    
+          background: #2c3338;
+
       }
   </style>
   <body>
+
+
+    <nav style="text-align: center;">
+      <ul class="dropdown" >
+              <li><a href="#"  style="font-weight: 600; transition: .3s" onclick="addUser()">Agregar Usuarios</a>
+
+              </li>
+
+              <li><a href="#"  style="font-weight: 600; transition: .3s">Agregar Soat</a>
+              
+              </li>
+
+              <li><a href="#" style="font-weight: 600; transition: .3s"  onclick="ListarSoat()">Listar Soat</a>
+
+              </li>
+
+              <li><a href="#"  style="font-weight: 600; transition: .3s" onclick="cerrar()">Cerrar Sesión</a>
+              </li>
+            </ul>
+    </nav>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
     <div class="container">
  
   <div style="padding:  2em; bask: red; background: #ececec; ">
-      <h1>Registro de Soat</h1>
+      <h4>Registro de Soat</h4>
       <input type="text" id="num_soat" placeholder="00001" class="form-control my-3">
       
        <select id="estado">
@@ -67,5 +93,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
     <script src="app.js"></script>
+   <script src="appRedireccion.js"></script>
+    
   </body>
 </html>
