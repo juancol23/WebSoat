@@ -101,24 +101,24 @@ db.collection("soat").onSnapshot((querySnapshot) => {
 
 
 
-// //Leer documentos
-// var tabla = document.getElementById('listarUsuario');
-// db.collection("users").onSnapshot((querySnapshot) => {
-//     tabla.innerHTML = '';
-//     querySnapshot.forEach((doc) => {
-//         console.log(`${doc.id} => ${doc.data().email}`);
-//         tabla.innerHTML += `
-//         <tr>
+//Leer documentos
+var tabla = document.getElementById('listarUsuario');
+db.collection("users").onSnapshot((querySnapshot) => {
+    tabla.innerHTML = '';
+    querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data().email}`);
+        tabla.innerHTML += `
+        <tr>
       
-//         <td>${doc.data().name}</td>
-//         <td>${doc.data().email}</td>
+        <td>${doc.data().name}</td>
+        <td>${doc.data().email}</td>
  
-//         <td><button class="btn btn-danger" onclick="eliminaruser('${doc.id}')">Eliminar</button></td>
-//         <td><button class="btn btn-warning" onclick="editar('${doc.id}','${doc.data().nombre}','${doc.data().estado}','${doc.data().persona}')">Editar</button></td>
-//         </tr>
-//         `
-//     });
-// });
+        <td><button class="btn btn-danger" onclick="eliminaruser('${doc.id}')">Eliminar</button></td>
+        <td><button class="btn btn-warning" onclick="editar('${doc.id}','${doc.data().nombre}','${doc.data().estado}','${doc.data().persona}')">Editar</button></td>
+        </tr>
+        `
+    });
+});
 
 
 //Leer documentos
