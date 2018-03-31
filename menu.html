@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	body{
+		text-align: center;
+		margin-top: 10%;
+	}
+</style>
+<body>
+	<button onclick="addUser()">Add User</button>
+	<button onclick="addSoat()">Add Soat</button>
+	<button onclick="ListarSoat()">Listar Soat</button>
+	<button onclick="cerrar()">cerrar</button>
+
+	<h4 id="usuario"></h4>
+	 
+
+	 <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+	 <script>
+	   // Initialize Firebase
+	   var config = {
+	     apiKey: "AIzaSyD8j25MNXGICGabCjhv-4_mGA7qkNzKcsc",
+	     authDomain: "asdasdasdasd-9752c.firebaseapp.com",
+	     databaseURL: "https://asdasdasdasd-9752c.firebaseio.com",
+	     projectId: "asdasdasdasd-9752c",
+	     storageBucket: "asdasdasdasd-9752c.appspot.com",
+	     messagingSenderId: "1093600469015"
+	   };
+	   firebase.initializeApp(config);
+	 </script>
+	     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	 <script src="app.js"></script>
+</body>
+</html>
