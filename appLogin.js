@@ -49,7 +49,7 @@ function observador(){
           location.href= url_redi_remote;
          }
 
-
+//hola
           if (URLactual == url_redi) {
               // location.href= url_redi;
           }
