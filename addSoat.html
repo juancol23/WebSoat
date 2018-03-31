@@ -23,7 +23,7 @@
   <body>
     <div class="container">
  
-
+  <div style="padding:  2em; bask: red; background: #ececec; ">
       <h1>Registro de Soat</h1>
       <input type="text" id="num_soat" placeholder="00001" class="form-control my-3">
       
@@ -41,21 +41,23 @@
       <button class="btn btn-info" id="boton" onclick="guardar()">registrar</button>
 
 
-      <table class="table my-3">
-          <thead>
-            <tr>
-              <th scope="col">N° de soat</th>
-              <th scope="col">Estado</th>    
-              <th scope="col">Persona a Cargo</th>
-              <th scope="col">Eliminar</th>
-              <th scope="col">Editar</th>
-            </tr>
-          </thead>
-          <tbody id="tabla">
-          </tbody>
+        <table class="table my-3">
+            <thead>
+              <tr>
+                <th scope="col">N° de soat</th>
+                <th scope="col">Estado</th>    
+                <th scope="col">Persona a Cargo</th>
+                <th scope="col">Eliminar</th>
+                <th scope="col">Editar</th>
+              </tr>
+            </thead>
+            <tbody id="tabla">
+
+            </tbody>
         </table>
+</div>
     </div>
-    
+         <h4 id="usuario" style="display: none"></h4>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

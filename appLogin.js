@@ -30,7 +30,7 @@ function observador(){
             
           var email = user.email;
 
-          document.getElementById("usuario").innerHTML = "Bienvenido "+user.email;
+          // document.getElementById("usuario").innerHTML = "Bienvenido "+user.email;
           // var URLactual = window.location;
           var URLactual = window.location.href;
           let url_condition = URLactual.substr(0,17);
@@ -69,7 +69,7 @@ function observador(){
           // User is signed out.
           console.log('no existe usuario activo')
 
-          document.getElementById("usuario").innerHTML = "Hola Anónimo";
+          // document.getElementById("usuario").innerHTML = "Hola Anónimo";
 
           var URLactual = window.location;
           var url_redi = 'https://juanvaldemar.github.io/WebSoat/';

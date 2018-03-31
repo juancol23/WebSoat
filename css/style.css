@@ -262,7 +262,7 @@ ul.dropdown li a {
 
 ul.dropdown li a:hover,
 ul.dropdown li a.hover{ 
-  background: #3498db;
+  background: #ff000091;
   position: relative;
   color: #fff;
 }

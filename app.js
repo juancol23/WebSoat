@@ -80,12 +80,12 @@ function guardar(){
 }
 
 //Leer documentos
-var tabla = document.getElementById('tabla');
+var tabla_ = document.getElementById('tabla');
 db.collection("soat").onSnapshot((querySnapshot) => {
-    tabla.innerHTML = '';
+    tabla_.innerHTML = '';
     querySnapshot.forEach((doc) => {
         console.log(`${doc.id} => ${doc.data().nombre}`);
-        tabla.innerHTML += `
+        tabla_.innerHTML += `
         <tr>
       
         <td>${doc.data().nombre}</td>
