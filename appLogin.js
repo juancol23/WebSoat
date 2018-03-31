@@ -99,7 +99,7 @@ function observador(){
           document.getElementById("usuario").innerHTML = "Hola "+user.email;
           // var URLactual = window.location;
           var URLactual = window.location;
-          var url_redi = 'http://localhost/SoatRicardo/Curso%20Firebase/CRUD%20Firebase/menu.html';
+          var url_redi = 'https://juanvaldemar.github.io/WebSoat/menu.html';
           if (URLactual != url_redi) {
               location.href= url_redi;
           }
@@ -122,7 +122,7 @@ function observador(){
           document.getElementById("usuario").innerHTML = "Hola Anónimo";
 
           var URLactual = window.location;
-          var url_redi = 'http://localhost/SoatRicardo/Curso%20Firebase/CRUD%20Firebase/login.html';
+          var url_redi = 'https://juanvaldemar.github.io/WebSoat/';
           if (URLactual != url_redi) {
               location.href= url_redi;
           }
