@@ -99,15 +99,6 @@ db.collection("soat").onSnapshot((querySnapshot) => {
     });
 });
 
-function cerrar(){
-    firebase.auth().signOut()
-    .then(function(){
-        console.log('Saliendo...')
-    })
-    .catch(function(error){
-        console.log(error)
-    })
-}
 
 
 // //Leer documentos

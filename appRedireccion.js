@@ -30,6 +30,26 @@
  console.log(URLactual); 
 
 
+ function cerrar(){
+     firebase.auth().signOut()
+     .then(function(){
+         console.log('Saliendo...')
+         if(url_condition == "http://localhost/"){
+           console.log("Test"); 
+           location.href= url_redi_local;
+         }else{
+          console.log("Producción")
+          location.href= url_redi_remote;
+         }
+     })
+     .catch(function(error){
+         console.log(error)
+     })
+ }
+
+
+
+
 function addUser(){
 
 
