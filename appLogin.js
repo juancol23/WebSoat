@@ -69,7 +69,7 @@ function observador(){
           // User is signed out.
           console.log('no existe usuario activo')
 
-          document.getElementById("usuario").innerHTML = "Hola Anónimo";
+          //document.getElementById("usuario").innerHTML = "Hola Anónimo";
 
           var URLactual = window.location;
           var url_redi = 'https://juanvaldemar.github.io/WebSoat/';
