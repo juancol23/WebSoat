@@ -224,19 +224,13 @@ function observador(){
         } else {
           // User is signed out.
           console.log('no existe usuario activo')
-
           document.getElementById("usuario").innerHTML = "Hola Anónimo";
-
-
-
           var URLactual = window.location.href;
           let url_condition = URLactual.substr(0,17);
 
-
-
           var url_redi_local = 'http://localhost/websoat/';
+                                
           var url_redi_remote = 'https://juanvaldemar.github.io/websoat/';
-
 
            if(url_condition == "http://localhost/"){
               console.log("Test"); 
