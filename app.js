@@ -99,8 +99,6 @@ db.collection("soat").onSnapshot((querySnapshot) => {
     });
 });
 
-
-
 //Leer documentos
 var tabla = document.getElementById('listarUsuario');
 db.collection("users").onSnapshot((querySnapshot) => {
@@ -120,7 +118,6 @@ db.collection("users").onSnapshot((querySnapshot) => {
     });
 });
 
-
 //Leer documentos
 var contenido = document.getElementById('contenido');
 db.collection("users").onSnapshot((querySnapshot) => {
@@ -130,7 +127,6 @@ db.collection("users").onSnapshot((querySnapshot) => {
         contenido.innerHTML += `$("#contenido").append("<option value='${doc.data().email}' >${doc.data().name}</option>"); `
     });
 });
-
 
 //borrar documentos
 function eliminar(id){
@@ -195,13 +191,9 @@ function eliminaruser(id){
     //         });
     //     }
 // }
-
-
-
-
+ 
 function observador(){
 // .orderByChild("email").equalTo(user.email)
-    
 
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
@@ -210,9 +202,7 @@ function observador(){
             // aparece(user);
             // User is signed in.
             var displayName = user.displayName;
-
             var email = user.email;
-
             document.getElementById("usuario").innerHTML = "Hola "+user.email;
             // var URLactual = window.location;
             var URLactual = window.location;
@@ -220,7 +210,6 @@ function observador(){
             // if (URLactual != url_redi) {
             //     location.href= url_redi;
             // }
-
             console.log('*****************');
             console.log(user.emailVerified)
             console.log('*****************');
@@ -238,11 +227,24 @@ function observador(){
 
           document.getElementById("usuario").innerHTML = "Hola Anónimo";
 
-          var URLactual = window.location;
-          var url_redi = 'http://localhost/SoatRicardo/Curso%20Firebase/CRUD%20Firebase/login.html';
-          if (URLactual != url_redi) {
-              location.href= url_redi;
-          }
+
+
+          var URLactual = window.location.href;
+          let url_condition = URLactual.substr(0,17);
+
+
+
+          var url_redi_local = 'http://localhost/websoat/';
+          var url_redi_remote = 'https://juanvaldemar.github.io/websoat/';
+
+
+           if(url_condition == "http://localhost/"){
+              console.log("Test"); 
+              location.href= url_redi_local;
+            }else{
+             console.log("Producción")
+             location.href= url_redi_remote;
+            }
 
           // ...
         }
