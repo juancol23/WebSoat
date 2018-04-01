@@ -240,7 +240,7 @@ ul.dropdown{
 ul.dropdown li{ 
   font-weight: bold; 
   float: left; 
-  width: 180px; 
+  width: 33%; 
   position: relative;
   background: #ecf0f1;
 }

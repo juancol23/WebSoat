@@ -30,7 +30,7 @@
  console.log(URLactual); 
 
 
- function cerrar(){
+ function cerrar_(){
      firebase.auth().signOut()
      .then(function(){
          console.log('Saliendo...')
