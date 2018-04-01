@@ -23,8 +23,8 @@
 
 
 
- var url_redi_local = 'http://localhost/websoat/';
- var url_redi_remote = 'https://juanvaldemar.github.io/websoat/';
+ var url_redi_local = 'http://localhost/WebSoat/';
+ var url_redi_remote = 'https://juanvaldemar.github.io/WebSoat/';
 
 
  console.log(URLactual); 
