@@ -84,16 +84,18 @@ var tabla_ = document.getElementById('tabla');
 db.collection("soat").onSnapshot((querySnapshot) => {
     tabla_.innerHTML = '';
     querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data().nombre}`);
+        console.log(`${doc.id} => ${doc.data().nombre}`); 
         tabla_.innerHTML += `
-        <tr>
-      
+        <tr> 
         <td>${doc.data().nombre}</td>
         <td>${doc.data().estado}</td>
         <td>${doc.data().persona}</td>
  
         <td><button class="btn btn-danger" onclick="eliminar('${doc.id}')">Eliminar</button></td>
-        <td><button class="btn btn-warning" onclick="editar('${doc.id}','${doc.data().nombre}','${doc.data().estado}','${doc.data().persona}')">Editar</button></td>
+        <td><button class="btn btn-warning" onclick="editarSoat('${doc.id}','${doc.data().nombre}','${doc.data().estado}','${doc.data().persona}')">Editar N° Soat</button></td>
+        <td><button class="btn btn-info" onclick="checkStatusSoat('${doc.id}','${doc.data().estado}')">Cambiar Estado</button></td>
+         
+              
         </tr>
         `
     });
@@ -101,7 +103,8 @@ db.collection("soat").onSnapshot((querySnapshot) => {
 
 //Leer documentos
 var tabla = document.getElementById('listarUsuario');
-db.collection("users").onSnapshot((querySnapshot) => {
+db.collection("users")
+.onSnapshot((querySnapshot) => {
     tabla.innerHTML = '';
     querySnapshot.forEach((doc) => {
         console.log(`${doc.id} => ${doc.data().email}`);
@@ -112,11 +115,21 @@ db.collection("users").onSnapshot((querySnapshot) => {
         <td>${doc.data().email}</td>
  
         <td><button class="btn btn-danger" onclick="eliminaruser('${doc.id}')">Eliminar</button></td>
-        <td><button class="btn btn-warning" onclick="editar('${doc.id}','${doc.data().nombre}','${doc.data().estado}','${doc.data().persona}')">Editar</button></td>
+        <td><button class="btn btn-warning" onclick="editarUser('${doc.id}','${doc.data().name}')">Editar</button></td>
+        <td><button class="btn pt btn-danger" onclick="reiniciarUserPassword('${doc.id}','${doc.data().email}')">Resetear Password</button></td>
+
         </tr>
         `
     });
 });
+
+// Create a reference to the cities collection
+var citiesRef = db.collection("cities");
+
+// Create a query against the collection.
+var query = citiesRef.where("state", "==", "CA");
+
+
 
 //Leer documentos
 var contenido = document.getElementById('contenido');
@@ -145,52 +158,113 @@ function eliminaruser(id){
     });
 }
 
-//editar documentos
-    // function editar(id,nombre,apellido,fecha){
+ 
+function editarUser(id,nombre){
 
-    //     document.getElementById('num_soat').value = nombre;
-    //     document.getElementById('estado').text = nombre;
-    //     document.getElementById('contenido').value = nombre;
-       
+    document.getElementById('name').value = nombre;
+ 
+    var boton = document.getElementById('boton');
+    boton.innerHTML = 'Editar';
+  
+    boton.onclick = function(){
+        var washingtonRef = db.collection("users").doc(id);
 
-    //     // var nombre = document.getElementById('num_soat').value;
-    //     // var estado = $('#estado').find(":selected").text();
-        
-    //     // var persona = $('#contenido').find(":selected").text();
+        var nombre = document.getElementById('name').value; 
 
-    //     // var email = $('#contenido').val();
+        return washingtonRef.update({
+             name: nombre 
+        })
+        .then(function() {
+            console.log("Document successfully updated!");
+            boton.innerHTML = 'Guardar';
+            document.getElementById('name').value = '';
+           
+        })
+        .catch(function(error) {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
+        });
+    }
+    console.log("Editar")
+}
+function editarSoat(id,nombre,estado,persona){
 
+    document.getElementById('num_soat').value = nombre;
+    // document.getElementById("estado").value = estado;
+    document.getElementById("contenido").value = persona;
+ 
+    var boton = document.getElementById('boton');
+    boton.innerHTML = 'Editar';
+  
+    boton.onclick = function(){
+        var washingtonRef = db.collection("soat").doc(id);
 
-    //     var boton = document.getElementById('boton');
-    //     boton.innerHTML = 'Editar';
+        var nombre = document.getElementById('num_soat').value; 
+        // var estado = $('#estado').find(":selected").value(); 
+        var persona = $('#contenido').find(":selected").text(); 
 
-    //     boton.onclick = function(){
-    //         var washingtonRef = db.collection("soat").doc(id);
-    //         // Set the "capital" field of the city 'DC'
+         
 
-    //         var nombre = document.getElementById('num_soat').value;
-    //         var apellido = document.getElementById('estado').value;
-    //         var fecha = document.getElementById('contenido').value;
+        return washingtonRef.update({
+             nombre: nombre,
+             estado: estado, 
+             persona: persona
 
-    //         return washingtonRef.update({
-    //              nombre: nombre,
-    //             estado: estado,
-    //             persona: persona,
-    //             email: email
-    //         })
-    //         .then(function() {
-    //             console.log("Document successfully updated!");
-    //             boton.innerHTML = 'Guardar';
-    //             document.getElementById('num_soat').value = '';
-    //             document.getElementById('estado').value = '';
-    //             document.getElementById('contenido').value = '';
-    //         })
-    //         .catch(function(error) {
-    //             // The document probably doesn't exist.
-    //             console.error("Error updating document: ", error);
-    //         });
-    //     }
-// }
+        })
+        .then(function() {
+            console.log("Document successfully updated!");
+            boton.innerHTML = 'Guardar';
+            document.getElementById('num_soat').value = '';
+            // document.getElementById('num_soat').value = '';
+           
+        })
+        .catch(function(error) {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
+        });
+    }
+
+    console.log("persona "+persona)
+}
+function checkStatusSoat(id,estado){
+        $(this).css("background-color","green");
+    
+        var washingtonRef = db.collection("soat").doc(id);
+        var estado_ = "";
+        if (estado == "Disponible") {
+              estado_ = "Vendido"
+        }else{
+              estado_ = "Disponible" 
+        }
+
+        return washingtonRef.update({
+             estado: estado_,
+        })
+
+        .then(function() {
+            console.log("Document successfully updated!");
+           
+        })
+
+        .catch(function(error) {
+            console.error("Error updating document: ", error);
+        });
+   
+    console.log("Estado-Soat: "+estado);
+}
+
+function reiniciarUserPassword(id,email){
+    
+    var auth = firebase.auth();
+ 
+    auth.sendPasswordResetEmail(email).then(function() {
+       console.log("Enviando Correctamente "+email);
+    }).catch(function(error) {
+       console.log("Error al enviar");
+    });
+ 
+    console.log("Click en reinicar Password");
+}
  
 function observador(){
 // .orderByChild("email").equalTo(user.email)
@@ -247,23 +321,7 @@ function observador(){
 observador();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 

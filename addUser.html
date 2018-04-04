@@ -47,11 +47,11 @@
     <div class="container">
  <div style="padding:  2em; bask: red; background: #ececec; ">
      <h4>Registro de usuarios</h4>
-     <input id="email_register"  class="form-control my-3" type="email" placeholder="Ingresa email" ">
+
+     <input id="email_register"  class="form-control my-3" type="email" placeholder="Ingresa email">
      <input id="name" type="text"  class="form-control my-3" placeholder="nombre">
      <input id="contrasena_register" type="password"  class="form-control my-3" placeholder="Ingresa contraseña">
-     <button onclick="registrar()" class="btn btn-info">Registrar</button>
-     <!-- <button onclick="cerrar()" class="btn btn-info">cerrar</button> -->
+     <button onclick="registrar()" id="boton" class="btn btn-info">Registrar</button>
 
      <div class="col-sm"> 
        <table class="table my-3">
@@ -63,6 +63,7 @@
                <th scope="col">Estado</th> -->
                <th scope="col">Eliminar</th> 
                <th scope="col">Editar</th>
+               <th scope="col">Reiniciar Constraseña</th>
              </tr>
            </thead>
            <tbody id="listarUsuario">
@@ -71,7 +72,7 @@
          </table>
      </div> 
 </div>
-     <h4 id="usuario" style="display: none"></h4>
+     <h4 id="usuario" style="display: "></h4>
 
      
     
