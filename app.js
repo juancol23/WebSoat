@@ -57,34 +57,34 @@ var db = firebase.firestore();
   }
 
 
-function guardar(){
-    var nombre = document.getElementById('num_soat').value;
-    var estado = $('#estado').find(":selected").text();
-    var persona = $('#contenido').find(":selected").text();
-    var email = $('#contenido').val();
-     
-    db.collection("soat").add({
-        nombre: nombre,
-        estado: estado,
-        persona: persona,
-        email: email
-    })
-    .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
-        // document.getElementById('num_soat').value = '';
-        // document.getElementById('estado').value = '';
-        // document.getElementById('persona').value = '';
-    })
-    .catch(function(error) {
-        console.error("Error adding document: ", error);
-    });
-}
+  function guardar(){
+      var nombre = document.getElementById('num_soat').value;
+      var estado = $('#estado').find(":selected").text();
+      var persona = $('#contenido').find(":selected").text();
+      var email = $('#contenido').val();
+       
+      db.collection("soat").add({
+          nombre: nombre,
+          estado: estado,
+          persona: persona,
+          email: email
+      })
+      .then(function(docRef) {
+          console.log("Document written with ID: ", docRef.id);
+          // document.getElementById('num_soat').value = '';
+          // document.getElementById('estado').value = '';
+          // document.getElementById('persona').value = '';
+      })
+      .catch(function(error) {
+          console.error("Error adding document: ", error);
+      });
+  }
 
 
 
-   // var soat_ = db.collection("soat") 
-   // var query_ = soat_.where("email", "==", "valdcolra@gmail.com");
-   // console.log("Query "+query_.nombre);
+     // var soat_ = db.collection("soat") 
+     // var query_ = soat_.where("email", "==", "valdcolra@gmail.com");
+     // console.log("Query "+query_.nombre);
 
 
  // db.collection("cities").where("capital", "==", true)
@@ -175,7 +175,6 @@ function editarUser(id,nombre){
         var nombre = document.getElementById('name').value; 
 
 
-
         return washingtonRef.update({
              name: nombre 
         })
@@ -183,11 +182,13 @@ function editarUser(id,nombre){
             console.log("Document successfully updated!");
             boton.innerHTML = 'Guardar';
             document.getElementById('name').value = '';
+            document.getElementById('email_register').value = '';
+            document.getElementById('contrasena_register').value = '';
 
             $("#email_register").attr("disabled", false);
             $("#contrasena_register").attr("disabled", false);
 
-           
+        
         })
         .catch(function(error) {
             // The document probably doesn't exist.
@@ -196,12 +197,13 @@ function editarUser(id,nombre){
     }
     console.log("Editar")
 }
-    var contenido_select_person = document.getElementById('contenido');
-  
-    contenido_select_person.onclick = function(){
-     var email_soat_select = $('#contenido').val();
-      document.getElementById("email_soat").value = email_soat_select;
-    }
+
+var contenido_select_person = document.getElementById('contenido');
+
+contenido_select_person.onclick = function(){
+ var email_soat_select = $('#contenido').val();
+  document.getElementById("email_soat").value = email_soat_select;
+}
  
 
 function editarSoat(id,nombre,estado,persona,email){
@@ -292,14 +294,14 @@ function reiniciarUserPassword(id,email){
  
     console.log("Click en reinicar Password");
 }
- 
+     $("#estado").attr("disabled", true);
 function observador(){
 // .orderByChild("email").equalTo(user.email)
 
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-              if (user.email == "riva@riva.com") {
-                var tabla_ = document.getElementById('tabla');
+
+            var tabla_ = document.getElementById('tabla');
                 db.collection("soat").onSnapshot((querySnapshot) => {
                     tabla_.innerHTML = '';
                     querySnapshot.forEach((doc) => {
@@ -321,29 +323,53 @@ function observador(){
                     });
                 });
 
-              }else{
-                var tabla_ = document.getElementById('tabla');
-                db.collection("soat").where("email", "==", user.email).onSnapshot((querySnapshot) => {
-                    tabla_.innerHTML = '';
-                    querySnapshot.forEach((doc) => {
-                        console.log(`${doc.id} => ${doc.data().nombre}`); 
-                        tabla_.innerHTML += `
-                        <tr> 
-                        <td>${doc.data().nombre}</td>
-                        <td>${doc.data().estado}</td>
-                        <td>${doc.data().persona}</td>
+                
+              // if (user.email == "riva@riva.com") {
+              //   var tabla_ = document.getElementById('tabla');
+              //   db.collection("soat").onSnapshot((querySnapshot) => {
+              //       tabla_.innerHTML = '';
+              //       querySnapshot.forEach((doc) => {
+              //           console.log(`${doc.id} => ${doc.data().nombre}`); 
+              //           tabla_.innerHTML += `
+              //           <tr> 
+              //           <td>${doc.data().nombre}</td>
+              //           <td>${doc.data().estado}</td>
+              //           <td>${doc.data().persona}</td>
+              //           <td>${doc.data().email}</td>
                  
-                        <td><button class="btn btn-danger" onclick="eliminar('${doc.id}')">Eliminar</button></td>
-                        <td><button class="btn btn-warning" onclick="editarSoat('${doc.id}','${doc.data().nombre}','${doc.data().estado}','${doc.data().persona}','${doc.data().email}')">Editar N° Soat</button></td>
-                        <td><button class="btn btn-info" onclick="checkStatusSoat('${doc.id}','${doc.data().estado}')">Cambiar Estado</button></td>
+              //           <td><button class="btn btn-danger" onclick="eliminar('${doc.id}')">Eliminar</button></td>
+              //           <td><button class="btn btn-warning" onclick="editarSoat('${doc.id}','${doc.data().nombre}','${doc.data().estado}','${doc.data().persona}','${doc.data().email}')">Editar N° Soat</button></td>
+              //           <td><button class="btn btn-info" onclick="checkStatusSoat('${doc.id}','${doc.data().estado}')">Cambiar Estado</button></td>
                          
                               
-                        </tr>
-                        `
-                    });
-                });
+              //           </tr>
+              //           `
+              //       });
+              //   });
 
-              }
+              // }else{
+              //   var tabla_ = document.getElementById('tabla');
+              //   db.collection("soat").where("email", "==", user.email).onSnapshot((querySnapshot) => {
+              //       tabla_.innerHTML = '';
+              //       querySnapshot.forEach((doc) => {
+              //           console.log(`${doc.id} => ${doc.data().nombre}`); 
+              //           tabla_.innerHTML += `
+              //           <tr> 
+              //           <td>${doc.data().nombre}</td>
+              //           <td>${doc.data().estado}</td>
+              //           <td>${doc.data().persona}</td>
+                 
+              //           <td><button class="btn btn-danger" onclick="eliminar('${doc.id}')">Eliminar</button></td>
+              //           <td><button class="btn btn-warning" onclick="editarSoat('${doc.id}','${doc.data().nombre}','${doc.data().estado}','${doc.data().persona}','${doc.data().email}')">Editar N° Soat</button></td>
+              //           <td><button class="btn btn-info" onclick="checkStatusSoat('${doc.id}','${doc.data().estado}')">Cambiar Estado</button></td>
+                         
+                              
+              //           </tr>
+              //           `
+              //       });
+              //   });
+
+              // }
             console.log('existe usuario activo '+user.email)
 
           
@@ -394,11 +420,7 @@ function observador(){
 }
 observador();
 
-
  
-
-
-
 
 var maxHeight = 400;
 
