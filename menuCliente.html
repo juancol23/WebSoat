@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+</head>
+<style>
+	body{
+		text-align: center;
+		margin-top: 10%;
+	}
+</style>
+<body>
+
+
+
+<div class="contenido" >
+	<h1>Bienvenido ingresa al menú donde<br>encontrarás	las actividades. 	</h1>
+ 
+</div> 
+<br>
+ <nav style="text-align: center;">
+ 	<ul class="dropdown" >
+         	<li><a href="#"  style="font-weight: 600; transition: .3s; display: none" onclick="addUser()">Registrar Vendedor</a>
+
+         	</li>
+
+         	<li><a href="#"  style="font-weight: 600; transition: .3s" onclick="addSoatCliente()">Listar mis Soat</a>
+         	
+         	</li>
+
+          
+
+         	<li><a href="#"  style="font-weight: 600; transition: .3s" onclick="cerrar_()">Cerrar Sesión</a>
+         	</li>
+         </ul>
+ </nav>
+
+	<h4 id="usuario"></h4>
+	 
+
+
+	 <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+	 <script>
+	   // Initialize Firebase
+	   var config = {
+	     apiKey: "AIzaSyD8j25MNXGICGabCjhv-4_mGA7qkNzKcsc",
+	     authDomain: "asdasdasdasd-9752c.firebaseapp.com",
+	     databaseURL: "https://asdasdasdasd-9752c.firebaseio.com",
+	     projectId: "asdasdasdasd-9752c",
+	     storageBucket: "asdasdasdasd-9752c.appspot.com",
+	     messagingSenderId: "1093600469015"
+	   };
+	   firebase.initializeApp(config);
+	 </script>
+	     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	 <script src="app.js"></script>
+	 <script src="appRedireccionCliente.js"></script>
+</body>
+</html>
